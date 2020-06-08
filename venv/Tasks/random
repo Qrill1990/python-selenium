@@ -1,0 +1,22 @@
+from selenium import webdriver
+import time
+
+link = "http://stfl.isimplelab.com/auth/login"
+
+try:
+    browser = webdriver.Chrome()
+    browser.maximize_window()
+    browser.implicitly_wait(5)
+    browser.get(link)
+
+    input1 = browser.find_element_by_xpath("//input[@placeholder='Логин']")
+    input1.send_keys("retail")
+    input1 = browser.find_element_by_xpath("//input[@placeholder='Пароль']")
+    input1.send_keys("retail")
+    button = browser.find_element_by_xpath("//app-button[@text='Log in']//button[@class='mat-ripple button regular stretched']")
+    button.click()
+    input2 = browser.find_element_by_xpath("//div[@class='header__menu__item mobile-hide']//div[@class='header__menu__item__text']").click()
+
+finally:
+    time.sleep(5)
+    browser.quit()
